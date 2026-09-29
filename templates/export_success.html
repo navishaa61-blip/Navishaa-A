@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Export Complete • {{ app_name }}{% endblock %}
+{% block content %}
+<section class="success card">
+  <div class="success-icon">✓</div>
+  <p class="eyebrow">EXPORT COMPLETE</p>
+  <h1>Your comic is ready!</h1>
+  <p>{{ filename }}</p>
+  <div class="actions">
+    <a class="button primary" href="/">Go Create Another Comic</a>
+    {% if filename %}<a class="button secondary" href="/static/exports/{{ filename }}" download>Download Again</a>{% endif %}
+  </div>
+</section>
+{% endblock %}

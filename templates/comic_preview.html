@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Comic Preview • {{ app_name }}{% endblock %}
+{% block content %}
+<div class="page-head">
+  <div>
+    <p class="eyebrow">YOUR GENERATED COMIC</p>
+    <h1>Comic Preview</h1>
+  </div>
+  <a class="button secondary" href="{{ pdf_url }}" download>⬇ Download PDF</a>
+</div>
+
+<div class="comic-grid">
+{% for panel in layout %}
+<article class="panel card">
+  <div class="panel-number">PANEL {{ panel.panel_number }}</div>
+  <h2>{{ panel.title }}</h2>
+  <img src="{{ panel.image_url }}" alt="Illustration for {{ panel.title }}">
+  <p class="scene"><em>{{ panel.scene_description }}</em></p>
+  {% if panel.caption %}<p><strong>Caption:</strong> {{ panel.caption }}</p>{% endif %}
+  {% if panel.narration %}<p><strong>Narration:</strong> {{ panel.narration }}</p>{% endif %}
+  {% if panel.dialogue %}<p class="dialogue">“{{ panel.dialogue }}”</p>{% endif %}
+  <details>
+    <summary>View image prompt</summary>
+    <p class="muted">{{ panel.image_prompt }}</p>
+  </details>
+</article>
+{% endfor %}
+</div>
+
+<div class="actions">
+  <a class="button primary" href="{{ pdf_url }}" download>Download Your Comic as PDF</a>
+  <a class="button secondary" href="/export-success?filename={{ filename }}">Continue</a>
+  <a class="button ghost" href="/">Create Another Comic</a>
+</div>
+{% endblock %}

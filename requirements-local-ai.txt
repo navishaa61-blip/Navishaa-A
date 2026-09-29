@@ -1,0 +1,7 @@
+# Optional local Diffusers backend dependencies.
+# This can require many GB of disk space and a compatible GPU for practical speed.
+diffusers>=0.35,<1
+transformers>=4.55,<5
+accelerate>=1.10,<2
+torch>=2.7,<3
+safetensors>=0.5,<1
